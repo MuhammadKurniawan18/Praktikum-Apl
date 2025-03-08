@@ -8,12 +8,23 @@ void hitungLuas();
 void hitungKeliling();
 void hitungVolume();
 
+double validateInput(string message) {
+    double value;
+    do {
+        cout << message;
+        cin >> value;
+        if (value < 0) {
+            cout << "Input tidak boleh negatif! Silakan masukkan ulang.\n";
+        }
+    } while (value < 0);
+    return value;
+}
+
 int main() {
     string username, password;
-    string correctUsername = "Nama Lengkap";
-    string correctPassword = "2409106XXX";
+    string correctUsername = "MuhammadKurniawan";
+    string correctPassword = "2409106091";
     
-    // Sistem Login
     do {
         cout << "Masukkan Username: ";
         cin >> username;
@@ -28,10 +39,7 @@ int main() {
     int pilihan;
     do {
         cout << "\n== SISTEM HITUNG BANGUN DATAR DAN BANGUN RUANG ==\n";
-        cout << "1. Hitung Luas\n";
-        cout << "2. Hitung Keliling\n";
-        cout << "3. Hitung Volume\n";
-        cout << "4. Logout\n";
+        cout << "1. Hitung Luas\n2. Hitung Keliling\n3. Hitung Volume\n4. Logout\n";
         cout << "Pilih menu: ";
         cin >> pilihan;
         
@@ -55,32 +63,31 @@ void hitungLuas() {
         cout << "Pilih bangun: ";
         cin >> pilihan;
         
-        double s, p, l, r, a, t;
         switch (pilihan) {
-            case 1:
-                cout << "Masukkan sisi persegi: ";
-                cin >> s;
+            case 1: {
+                double s = validateInput("Masukkan sisi persegi: ");
                 cout << "Luas: " << s * s << "\n";
                 break;
-            case 2:
-                cout << "Masukkan panjang dan lebar: ";
-                cin >> p >> l;
+            }
+            case 2: {
+                double p = validateInput("Masukkan panjang: ");
+                double l = validateInput("Masukkan lebar: ");
                 cout << "Luas: " << p * l << "\n";
                 break;
-            case 3:
-                cout << "Masukkan jari-jari lingkaran: ";
-                cin >> r;
+            }
+            case 3: {
+                double r = validateInput("Masukkan jari-jari lingkaran: ");
                 cout << "Luas: " << PI * r * r << "\n";
                 break;
-            case 4:
-                cout << "Masukkan alas dan tinggi segitiga: ";
-                cin >> a >> t;
+            }
+            case 4: {
+                double a = validateInput("Masukkan alas: ");
+                double t = validateInput("Masukkan tinggi: ");
                 cout << "Luas: " << 0.5 * a * t << "\n";
                 break;
-            case 5:
-                return;
-            default:
-                cout << "Pilihan tidak valid.\n";
+            }
+            case 5: return;
+            default: cout << "Pilihan tidak valid.\n";
         }
     } while (true);
 }
@@ -93,32 +100,32 @@ void hitungKeliling() {
         cout << "Pilih bangun: ";
         cin >> pilihan;
         
-        double s, p, l, r, a, b, c;
         switch (pilihan) {
-            case 1:
-                cout << "Masukkan sisi persegi: ";
-                cin >> s;
+            case 1: {
+                double s = validateInput("Masukkan sisi persegi: ");
                 cout << "Keliling: " << 4 * s << "\n";
                 break;
-            case 2:
-                cout << "Masukkan panjang dan lebar: ";
-                cin >> p >> l;
+            }
+            case 2: {
+                double p = validateInput("Masukkan panjang: ");
+                double l = validateInput("Masukkan lebar: ");
                 cout << "Keliling: " << 2 * (p + l) << "\n";
                 break;
-            case 3:
-                cout << "Masukkan jari-jari lingkaran: ";
-                cin >> r;
+            }
+            case 3: {
+                double r = validateInput("Masukkan jari-jari lingkaran: ");
                 cout << "Keliling: " << 2 * PI * r << "\n";
                 break;
-            case 4:
-                cout << "Masukkan sisi a, b, dan c segitiga: ";
-                cin >> a >> b >> c;
+            }
+            case 4: {
+                double a = validateInput("Masukkan sisi pertama segitiga: ");
+                double b = validateInput("Masukkan sisi kedua segitiga: ");
+                double c = validateInput("Masukkan sisi ketiga segitiga: ");
                 cout << "Keliling: " << a + b + c << "\n";
                 break;
-            case 5:
-                return;
-            default:
-                cout << "Pilihan tidak valid.\n";
+            }
+            case 5: return;
+            default: cout << "Pilihan tidak valid.\n";
         }
     } while (true);
 }
@@ -131,32 +138,33 @@ void hitungVolume() {
         cout << "Pilih bangun: ";
         cin >> pilihan;
         
-        double s, p, l, t, r;
         switch (pilihan) {
-            case 1:
-                cout << "Masukkan sisi kubus: ";
-                cin >> s;
+            case 1: {
+                double s = validateInput("Masukkan sisi kubus: ");
                 cout << "Volume: " << pow(s, 3) << "\n";
                 break;
-            case 2:
-                cout << "Masukkan panjang, lebar, dan tinggi balok: ";
-                cin >> p >> l >> t;
+            }
+            case 2: {
+                double p = validateInput("Masukkan panjang balok: ");
+                double l = validateInput("Masukkan lebar balok: ");
+                double t = validateInput("Masukkan tinggi balok: ");
                 cout << "Volume: " << p * l * t << "\n";
                 break;
-            case 3:
-                cout << "Masukkan jari-jari bola: ";
-                cin >> r;
+            }
+            case 3: {
+                double r = validateInput("Masukkan jari-jari bola: ");
                 cout << "Volume: " << (4.0 / 3.0) * PI * pow(r, 3) << "\n";
                 break;
-            case 4:
-                cout << "Masukkan jari-jari dan tinggi kerucut: ";
-                cin >> r >> t;
+            }
+            case 4: {
+                double r = validateInput("Masukkan jari-jari kerucut: ");
+                double t = validateInput("Masukkan tinggi kerucut: ");
                 cout << "Volume: " << (1.0 / 3.0) * PI * pow(r, 2) * t << "\n";
                 break;
-            case 5:
-                return;
-            default:
-                cout << "Pilihan tidak valid.\n";
+            }
+            case 5: return;
+            default: cout << "Pilihan tidak valid.\n";
         }
     } while (true);
 }
+
