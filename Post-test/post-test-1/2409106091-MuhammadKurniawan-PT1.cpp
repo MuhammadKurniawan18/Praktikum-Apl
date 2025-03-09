@@ -26,15 +26,19 @@ int main() {
     string correctPassword = "2409106091";
     
     do {
-        cout << "Masukkan Username: ";
-        cin >> username;
-        cout << "Masukkan Password: ";
-        cin >> password;
-        
-        if (username != correctUsername || password != correctPassword) {
-            cout << "Username atau Password salah! Coba lagi.\n";
-        }
-    } while (username != correctUsername || password != correctPassword);
+    cout << "Masukkan Username: ";
+    getline(cin, username); //  getline agar bisa menangkap input kosong
+
+    cout << "Masukkan Password: ";
+    getline(cin, password);
+
+    if (username.empty() || password.empty()) {
+        cout << "Username dan Password tidak boleh kosong! Silakan masukkan kembali.\n";
+    } else if (username != correctUsername || password != correctPassword) {
+        cout << "Username atau Password salah! Coba lagi.\n";
+    }
+
+    } while (username.empty() || password.empty() || username != correctUsername || password != correctPassword);
     
     int pilihan;
     do {
@@ -167,4 +171,3 @@ void hitungVolume() {
         }
     } while (true);
 }
-
